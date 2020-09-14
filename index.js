@@ -628,11 +628,12 @@ var cy = (window.cy = cytoscape({
       style: {
         width: 1,
         "curve-style": "bezier",
-        "control-point-step-size": 40,
+        // "control-point-step-size": 40,
         // "control-point-distances": 12,
         // "control-point-weights": 0.1,
         // "line-color": "#37434aff",
-        "line-color": "#a8eae5",
+        "line-color": "#FFF",
+        opacity: 0.5,
       },
     },
     // {
