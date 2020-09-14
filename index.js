@@ -522,14 +522,14 @@ const data = [
 ];
 
 const colors = new Map([
-  ["Process aid", "#FCF4E4"],
+  ["Process aid", "#EA291F"],
   ["Surfactant", "#F99236"],
-  ["Bittering agent", "#DEF0EB"],
+  ["Bittering agent", "#FFC233"],
   ["Wash Aid", "#29A366"],
-  ["Enzyme", "#F6E5E8"],
-  ["Polymer", "#EA291F"],
-  ["Film", "#E0EBF5"],
-  ["Process Aid", "#2E4552"],
+  ["Enzyme", "#15DEF4"],
+  ["Polymer", "#006EFF"],
+  ["Film", "#2E4552"],
+  ["Process Aid", "#6D2269"],
 ]);
 let edges = [];
 let nodes = new Map();
