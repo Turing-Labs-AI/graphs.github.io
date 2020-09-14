@@ -62,6 +62,7 @@ const data = [
   ["G2", "F5", 0.2166, 0.3975, 0.93, 0.2195, 67.91, 0.8786],
   ["H4", "W2", 0.2083, 0.3824, 0.89, 0.201, 75.28, 0.6504],
   ["E1", "F6", 0.1953, 0.3585, 0.84, 0.1996, 43.43, 0.4145],
+  ["B1", "N3", 0.1953, 0.3585, 0.84, 0.1996, 43.43, 0.4145],
   // ["", "", , , , , 54.41],
 ];
 
@@ -77,12 +78,17 @@ const sorted = unique.sort();
 let elms = [];
 
 for (x in sorted) {
-  elms.push({ data: { id: sorted[x], name: sorted[x] } });
+  elms.push({
+    data: { id: sorted[x], name: sorted[x], label: sorted[x] },
+  });
 }
 
 //Edges
 for (let i = 0; i < data.length; i++) {
-  elms.push({ data: { source: data[i][0], target: data[i][1] } });
+  elms.push({
+    data: { source: data[i][0], target: data[i][1] },
+    classes: "bezier",
+  });
 }
 
 var cy = (window.cy = cytoscape({
@@ -90,15 +96,21 @@ var cy = (window.cy = cytoscape({
 
   boxSelectionEnabled: false,
   autounselectify: true,
+  minDist: 2,
+  // maxExpandIterations: 9,
+  padding: 10,
+  animate: false,
 
   layout: {
-    name: "concentric",
-    concentric: function (node) {
-      return node.degree();
-    },
-    levelWidth: function (nodes) {
-      return 2;
-    },
+    name: "cose",
+    // concentric: function (node) {
+    //   return node.degree();
+    // },
+    // levelWidth: function (nodes) {
+    //   return 2;
+    // },
+    // minDist: 40,
+    nodeSeparation: 40,
   },
 
   style: [
@@ -107,23 +119,58 @@ var cy = (window.cy = cytoscape({
       style: {
         height: 20,
         width: 20,
-        "background-color": "#30c9bc",
+        "background-color": "#a8eae5",
+        content: "data(name)",
+        "font-size": "12px",
+        "text-valign": "center",
+        "text-halign": "center",
+        "text-outline-color": "#555",
       },
     },
 
+    // {
+    //   selector: "edge",
+    //   style: {
+    //     "curve-style": "haystack",
+    //     "haystack-radius": 0,
+    //     width: 5,
+    //     opacity: 0.5,
+    //     "line-color": "#f2f08c",
+    //   },
+    // },
     {
       selector: "edge",
       style: {
-        "curve-style": "haystack",
-        "haystack-radius": 0,
-        width: 5,
-        opacity: 0.5,
+        width: 1,
+        "curve-style": "bezier",
+        "control-point-step-size": 40,
+        // "control-point-distances": 12,
+        // "control-point-weights": 0.1,
+        // "line-color": "#37434aff",
         "line-color": "#a8eae5",
+      },
+    },
+    // {
+    //   selector: "edge[arrow]",
+    //   style: {
+    //     "target-arrow-shape": "data(arrow)",
+    //   },
+    // },
+    {
+      selector: "edge",
+      style: {
+        "target-arrow-shape": "vee",
+        "target-arrow-color": "#a8eae5",
+      },
+    },
+    {
+      selector: "edge.hollow",
+      style: {
+        "target-arrow-fill": "white",
+        background: "white",
       },
     },
   ],
 
   elements: elms,
 }));
-
-console.log(cy);
