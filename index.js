@@ -591,8 +591,9 @@ var cy = (window.cy = cytoscape({
     levelWidth: function (nodes) {
       return 2;
     },
-    minDist: 100,
-    nodeSeparation: 100,
+    // minDist: 100,
+    // nodeSeparation: 100,
+    idealEdgeLength: 50,
   },
 
   style: [
