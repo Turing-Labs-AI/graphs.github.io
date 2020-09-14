@@ -85,7 +85,7 @@ for (x in sorted) {
       id: sorted[x],
       name: sorted[x],
       label: sorted[x],
-      size: Math.random() * 50,
+      size: Math.floor(Math.random() * (60 - 20) + 20),
     },
   });
 }
