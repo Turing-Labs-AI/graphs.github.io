@@ -78,8 +78,15 @@ const sorted = unique.sort();
 let elms = [];
 
 for (x in sorted) {
+  // const size = Math.floor(x[2] * 100);
+  // console.log(JSON.stringify(sorted));
   elms.push({
-    data: { id: sorted[x], name: sorted[x], label: sorted[x] },
+    data: {
+      id: sorted[x],
+      name: sorted[x],
+      label: sorted[x],
+      size: Math.random() * 50,
+    },
   });
 }
 
@@ -103,13 +110,13 @@ var cy = (window.cy = cytoscape({
 
   layout: {
     name: "cose",
-    // concentric: function (node) {
-    //   return node.degree();
-    // },
-    // levelWidth: function (nodes) {
-    //   return 2;
-    // },
-    // minDist: 40,
+    concentric: function (node) {
+      return node.degree();
+    },
+    levelWidth: function (nodes) {
+      return 2;
+    },
+    minDist: 40,
     nodeSeparation: 40,
   },
 
@@ -117,8 +124,8 @@ var cy = (window.cy = cytoscape({
     {
       selector: "node",
       style: {
-        height: 20,
-        width: 20,
+        height: "data(size)",
+        width: "data(size)",
         "background-color": "#a8eae5",
         content: "data(name)",
         "font-size": "12px",
