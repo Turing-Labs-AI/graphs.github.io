@@ -199,4 +199,8 @@ for (i in data) {
   });
 }
 
-console.log(JSON.stringify(out));
+console.log(
+  Array.from(formatted.values())
+    .map((a) => `${a.replace}  Category: ${a.category}`)
+    .join("\n")
+);

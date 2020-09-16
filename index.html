@@ -5,7 +5,7 @@
     <style>
       #cy {
         width: 100vw;
-        height: 100vh;
+        height: 85vh;
         display: block;
         background: #010101ff;
       }
@@ -16,9 +16,47 @@
     <script src="https://unpkg.com/layout-base/layout-base.js"></script>
     <script src="https://unpkg.com/avsdf-base/avsdf-base.js"></script>
     <script src="asdf.js"></script>
+    <!-- <script>
+      var onChoose = (t) => {
+        debugger;
+        console.log(t);
+      };
+    </script> -->
   </head>
 
   <body>
+    <div>
+      <div>
+        <input
+          type="radio"
+          id="cose"
+          name="layout"
+          value="cose"
+          checked
+          onclick="onChoose('cose')"
+        />
+        <label for="cose">Cose</label>
+      </div>
+
+      <div>
+        <input type="radio" id="circle" name="layout" value="circle" /><label
+          for="circle"
+          onclick="onChoose('circle')"
+          >Circle</label
+        >
+      </div>
+
+      <div>
+        <input
+          type="radio"
+          id="concentric"
+          name="layout"
+          value="concentric"
+          onclick="onChoose('concentric')"
+        /><label for="concentric">Concentric</label>
+      </div>
+    </div>
+
     <div id="cy"></div>
   </body>
   <script src="index.js"></script>

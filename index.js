@@ -6,7 +6,7 @@ const data = [
     parent:
       "Acrylamide - Methylacrylamideopropyltrimethyl ammonium chloride copolymer",
     child: "Alcohol",
-    isDependent: false,
+    isDependent: true,
     category: "Process aid",
     KL: 0.5318,
     relative: 0.9762,
@@ -549,6 +549,12 @@ for (e of data) {
     },
   };
 
+  if (e.isDependent) {
+    parentNode.renderedPosition = {
+      x: 100,
+      y: 300,
+    };
+  }
   nodes.set(e.parent, parentNode);
 
   if (!nodes.get(e.child)) {
@@ -573,83 +579,91 @@ for (e of data) {
 
 const elms = [...Array.from(nodes.values()), ...edges];
 
-var cy = (window.cy = cytoscape({
-  container: document.getElementById("cy"),
+const drawIt = (layoutName) => {
+  window.cy = cytoscape({
+    container: document.getElementById("cy"),
 
-  boxSelectionEnabled: false,
-  autounselectify: true,
-  minDist: 25,
-  // maxExpandIterations: 9,
-  padding: 10,
-  animate: false,
+    boxSelectionEnabled: false,
+    autounselectify: true,
+    minDist: 25,
+    // maxExpandIterations: 9,
+    padding: 10,
+    animate: false,
 
-  layout: {
-    name: "cose",
-    concentric: function (node) {
-      return node.degree();
-    },
-    levelWidth: function (nodes) {
-      return 2;
-    },
-    // minDist: 100,
-    // nodeSeparation: 100,
-    idealEdgeLength: 50,
-  },
-
-  style: [
-    {
-      selector: "node",
-      style: {
-        height: "data(size)",
-        width: "data(size)",
-        // "background-color": "#a8eae5",
-        "background-color": "data(categoryColor)",
-        color: "#FFF",
-        // "text-outline-width": 1,
-        label: "data(name)",
-        "font-size": "10px",
-        // "text-valign": "center",
-        // "text-halign": "center",
+    layout: {
+      name: layoutName,
+      concentric: function (node) {
+        return node.degree();
       },
+      levelWidth: function (nodes) {
+        return 2;
+      },
+      // minDist: 100,
+      // nodeSeparation: 100,
+      idealEdgeLength: 50,
     },
 
-    // {
-    //   selector: "edge",
-    //   style: {
-    //     "curve-style": "haystack",
-    //     "haystack-radius": 0,
-    //     width: 5,
-    //     opacity: 0.5,
-    //     "line-color": "#f2f08c",
-    //   },
-    // },
-    {
-      selector: "edge",
-      style: {
-        width: 1,
-        "curve-style": "bezier",
-        // "control-point-step-size": 40,
-        // "control-point-distances": 12,
-        // "control-point-weights": 0.1,
-        // "line-color": "#37434aff",
-        "line-color": "#FFF",
-        opacity: 0.5,
+    style: [
+      {
+        selector: "node",
+        style: {
+          height: "data(size)",
+          width: "data(size)",
+          // "background-color": "#a8eae5",
+          "background-color": "data(categoryColor)",
+          color: "#FFF",
+          // "text-outline-width": 1,
+          label: "data(name)",
+          "font-size": "10px",
+          // "text-valign": "center",
+          // "text-halign": "center",
+        },
       },
-    },
-    // {
-    //   selector: "edge[arrow]",
-    //   style: {
-    //     "target-arrow-shape": "data(arrow)",
-    //   },
-    // },
-    {
-      selector: "edge",
-      style: {
-        // "target-arrow-shape": "vee",
-        "target-arrow-color": "#a8eae5",
-      },
-    },
-  ],
 
-  elements: elms,
-}));
+      // {
+      //   selector: "edge",
+      //   style: {
+      //     "curve-style": "haystack",
+      //     "haystack-radius": 0,
+      //     width: 5,
+      //     opacity: 0.5,
+      //     "line-color": "#f2f08c",
+      //   },
+      // },
+      {
+        selector: "edge",
+        style: {
+          width: 1,
+          "curve-style": "bezier",
+          // "control-point-step-size": 40,
+          // "control-point-distances": 12,
+          // "control-point-weights": 0.1,
+          // "line-color": "#37434aff",
+          "line-color": "#FFF",
+          opacity: 0.5,
+        },
+      },
+      // {
+      //   selector: "edge[arrow]",
+      //   style: {
+      //     "target-arrow-shape": "data(arrow)",
+      //   },
+      // },
+      {
+        selector: "edge",
+        style: {
+          // "target-arrow-shape": "vee",
+          "target-arrow-color": "#a8eae5",
+        },
+      },
+    ],
+
+    elements: elms,
+  });
+};
+
+drawIt("cose");
+
+var onChoose = (name) => {
+  drawIt(name);
+};
