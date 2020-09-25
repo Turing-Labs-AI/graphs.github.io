@@ -593,10 +593,11 @@ const drawIt = (layoutName) => {
     layout: {
       name: layoutName,
       concentric: function (node) {
-        return node.degree();
+        // debugger;
+        return Math.floor(node.data().size / 2);
       },
       levelWidth: function (nodes) {
-        return 2;
+        return 3;
       },
       // minDist: 100,
       // nodeSeparation: 100,
