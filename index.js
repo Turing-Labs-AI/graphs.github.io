@@ -597,7 +597,7 @@ const drawIt = (layoutName) => {
         return Math.floor(node.data().size / 2);
       },
       levelWidth: function (nodes) {
-        return 3;
+        return 4;
       },
       // minDist: 100,
       // nodeSeparation: 100,
