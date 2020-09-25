@@ -599,6 +599,16 @@ const drawIt = (layoutName) => {
       levelWidth: function (nodes) {
         return 4;
       },
+      transform: function (node, position) {
+        if (node.data().name.toLowerCase() === "alcohol") {
+          return { x: 500, y: 500 };
+        }
+        if (node.data().name === "Polyethyleneimine ethoxylate") {
+          position.y += 10;
+        }
+        return position;
+      },
+      minNodeSpacing: 30,
       // minDist: 100,
       // nodeSeparation: 100,
       idealEdgeLength: 50,
