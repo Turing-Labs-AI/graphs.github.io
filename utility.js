@@ -144,7 +144,9 @@ const formatted = new Map([
   ["S3", { replace: "Polyethyleneimine ethoxylate", category: "Polymer" }],
   ["T1", { replace: "Polyethyleneimine, alkoxylated", category: "Polymer" }],
   ["U1", { replace: "Polyvinyl alcohol polymer", category: "Film" }],
+  //INDEX
   ["V1", { replace: "Propoxylated ethoxylated amine", category: "Polymer" }],
+  //INDEX
   ["W1", { replace: "Propylene glycol", category: "Process Aid" }],
   ["W2", { replace: "Protease", category: "Enzyme" }],
   ["X1", { replace: "Siloxanes and silicones", category: "Process aid" }],

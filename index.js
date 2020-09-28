@@ -279,7 +279,7 @@ const data = [
     relative: 0.5361,
   },
   {
-    parent: "Propoxylated ethoxylated amine",
+    parent: "TARGET",
     child: "C10-16 alkyldimethylamine oxide",
     isDependent: false,
     category: "Polymer",
@@ -408,7 +408,7 @@ const data = [
     relative: 0.4343,
   },
   {
-    parent: "Propoxylated ethoxylated amine",
+    parent: "TARGET",
     child: "Ethanolamine myristate",
     isDependent: false,
     category: "Polymer",
@@ -472,7 +472,7 @@ const data = [
     relative: 0.4042,
   },
   {
-    parent: "Propoxylated ethoxylated amine",
+    parent: "TARGET",
     child: "Sodium C10-16 alkylbenzene sulfonate",
     isDependent: false,
     category: "Polymer",
@@ -600,18 +600,18 @@ const drawIt = (layoutName) => {
         return 4;
       },
       transform: function (node, position) {
-        if (node.data().name.toLowerCase() === "alcohol") {
+        if (node.data().name.toLowerCase() === "target") {
           return { x: 500, y: 500 };
         }
         if (node.data().name === "Polyethyleneimine ethoxylate") {
-          position.y += 10;
+          position.y += 90;
         }
         return position;
       },
-      minNodeSpacing: 30,
+      minNodeSpacing: 50,
       // minDist: 100,
       // nodeSeparation: 100,
-      idealEdgeLength: 50,
+      // idealEdgeLength: 50,
     },
 
     style: [
