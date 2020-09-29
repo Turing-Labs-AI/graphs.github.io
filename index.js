@@ -673,7 +673,7 @@ const drawIt = (layoutName) => {
   });
 };
 
-drawIt("cose");
+drawIt("concentric");
 
 var onChoose = (name) => {
   drawIt(name);
