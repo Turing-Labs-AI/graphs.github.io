@@ -279,7 +279,7 @@ const data = [
     relative: 0.5361,
   },
   {
-    parent: "TARGET",
+    parent: "Stain Removal Index",
     child: "C10-16 alkyldimethylamine oxide",
     isDependent: false,
     category: "Polymer",
@@ -408,7 +408,7 @@ const data = [
     relative: 0.4343,
   },
   {
-    parent: "TARGET",
+    parent: "Stain Removal Index",
     child: "Ethanolamine myristate",
     isDependent: false,
     category: "Polymer",
@@ -472,7 +472,7 @@ const data = [
     relative: 0.4042,
   },
   {
-    parent: "TARGET",
+    parent: "Stain Removal Index",
     child: "Sodium C10-16 alkylbenzene sulfonate",
     isDependent: false,
     category: "Polymer",
@@ -600,7 +600,7 @@ const drawIt = (layoutName) => {
         return 4;
       },
       transform: function (node, position) {
-        if (node.data().name.toLowerCase() === "target") {
+        if (node.data().name.toLowerCase() === "stain removal index") {
           return { x: 500, y: 500 };
         }
         if (node.data().name === "Polyethyleneimine ethoxylate") {
